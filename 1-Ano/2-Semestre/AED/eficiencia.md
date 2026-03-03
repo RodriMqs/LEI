@@ -12,11 +12,11 @@ Do mais eficiente para o menos eficiente:
 
 | Notação | Nome | Performance | Descrição |
 | :--- | :--- | :--- | :--- |
-| **O(1)** | **Constante** | 🚀 Excelente | O tempo de execução não depende do tamanho dos dados. |
-| **O(log n)** | **Logarítmica** | ✅ Muito Boa | O problema é dividido ao meio a cada passo. |
-| **O(n)** | **Linear** | ⚖️ Aceitável | O tempo cresce proporcionalmente à entrada. |
-| **O(n log n)** | **Linearítmica** | 📉 Moderada | Padrão para algoritmos de ordenação eficientes. |
-| **O(n²)** | **Quadrática** | ⚠️ Má | Loops aninhados. Muito lento para n grande. |
+| **O(1)** | **Constante** | Excelente | O tempo de execução não depende do tamanho dos dados. |
+| **O(log n)** | **Logarítmica** | Muito Boa | O problema é dividido ao meio a cada passo. |
+| **O(n)** | **Linear** | ⚖️ceitável | O tempo cresce proporcionalmente à entrada. |
+| **O(n log n)** | **Linearítmica** | Moderada | Padrão para algoritmos de ordenação eficientes. |
+| **O(n²)** | **Quadrática** | ⚠️á | Loops aninhados. Muito lento para n grande. |
 
 ---
 
