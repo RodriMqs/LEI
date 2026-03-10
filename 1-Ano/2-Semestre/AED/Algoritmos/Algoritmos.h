@@ -76,7 +76,8 @@ void ordenarSeleccao (int A[], int N)
       if (A[j] < A[posMenor])
         posMenor = j;
     }
-    if(posMenor != k)	// trocar A[posMenor] com A[k]
+    if(posMenor != k)	
+      // trocar A[posMenor] com A[k]
       trocar(&A[posMenor], &A[k]);
   }
 }
@@ -101,7 +102,8 @@ void ordenarBorbulhagem (int A[], int N)
 int determinarPosicaoPivot (int A[], int inicio, int fim)
 {
   int k, pos;
-  pos = inicio;		//  pos = posição final do pivot (A[inicio]) em A ordenado
+  pos = inicio;		
+  // pos é a posição final do pivot (A[inicio]) em A ordenado
   for(k = inicio + 1; k <= fim; k++) {
     if(A[k] < A[inicio]) {
       pos++;
@@ -115,7 +117,8 @@ int determinarPosicaoPivot (int A[], int inicio, int fim)
 
 void ordenarQuicksort (int A[], int inicio, int fim)
 {
-  int pos;		//  pos = posição final do pivot A[inicio] em A ordenado
+  int pos;		
+  // pos é a posição final do pivot A[inicio] em A ordenado
   if(inicio < fim) {
     pos = determinarPosicaoPivot(A, inicio, fim);  // colocar o pivot ordenado
     ordenarQuicksort(A, inicio, pos-1);		// ordenar a sub-array esquerdo
@@ -152,7 +155,8 @@ void fundir (int A[], int inicio, int meio, int fim)
       Aux[k] = A[i];
       k++;
     }
-	//  array Aux construído e ordenado; agora passar Aux para o array A
+  // array Aux construído e ordenado
+  // agora passar os elementos do Aux para o array A
   for(i = 0; i < k; i++)
     A[inicio+i] = Aux[i];
 }
@@ -181,15 +185,18 @@ int pesquisaExaustiva (int E, int A[], int N)
     else
       k = k + 1;
   }
-  // pos = -1  => E não existe em A; pos >= 0 => E está na posição pos de A
-	return pos;
+  // pos = -1 => E não existe em A 
+  // pos >= 0 => E está na posição pos de A
+  return pos;
 }
 
-// pesquisar um elemento num array ordenado
+// pesquisar um elemento num array ordenado por ordem crescente
 int pesquisaSequencial (int E, int A[], int N)
 {
-  int k, pos;		
-  pos = -1; //  pos = posição onde E se encontra em A (-1 = não existe)
+  int k, pos;
+  // pos é a posição de E no array A 
+  //  se pos = -1 então E não existe em A		
+  pos = -1; 
   k = 0;
   while(k < N && pos == -1) 
   {
@@ -201,11 +208,12 @@ int pesquisaSequencial (int E, int A[], int N)
       else
         pos = -2;
   }
-  // pos < 0 => E não existe em A; pos = 0 => E existe na posição pos de A
+  // pos < 0 => E não existe em A
+  // pos >= 0 => E está na posição pos de A
   return pos;
 }
 
-// pesquisar um elemento num array ordenado
+// pesquisar um elemento num array ordenado por ordem crescente
 int pesquisaBinaria (int E, int A[], int N)
 {
   int  inicio, fim, meio, pos;
@@ -225,16 +233,16 @@ int pesquisaBinaria (int E, int A[], int N)
   return pos;
 }
 
-// pesquisar um elemento num array ordenado
+// pesquisar um elemento num array ordenado por ordem crescente
 int pesquisaBinariaR (int E, int A[], int inicio, int fim)
 {
   int  meio;
   // casos base/terminais
   if (inicio > fim)
-    return -1;		// E não está em A
+    return -1;  // E não está em A
   meio = (inicio + fim) / 2;
   if (A[meio] == E)
-    return meio;	// E está na posição meio de A
+    return meio;  // E está na posição meio de A
   // caso geral
   if (A[meio] < E)
     return pesquisaBinariaR(E, A, meio+1, fim);
