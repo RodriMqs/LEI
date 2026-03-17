@@ -2,26 +2,21 @@
 /* ------------------------------------------------------- */
 /* ---------- Biblioteca OutrasOperacoesGrupoA ----------- */
 /* ------------------------------------------------------- */
-#include <stdio.h>
-#include <stdlib.h>
 
-#include "Aleatorio.h"
-#include "OperacoesBasicasGrupoA.h"
-#include "EADLista.h"
 
-// Protótipos/headers das funções
+// Protï¿½tipos/headers das funï¿½ï¿½es
 
 PNodoLista criarListaAleatoria (int);
 
 
 
-// Implementação das funções
+// Implementaï¿½ï¿½o das funï¿½ï¿½es
 
 PNodoLista criarListaAleatoria (int N)
 {
     PNodoLista L = criarLista();
     DadosLista X;
-    int i = 0;
+    int N, int i = 0;
     while (i < N)
     {
         X = criarElementoLista();
@@ -35,6 +30,44 @@ PNodoLista criarListaAleatoria (int N)
     return L;
 }
 
+int totalElementosLista (PNodoLista L)
+{
+    int total = 0;
+    while(L != NULL)
+    {
+        total++;
+        L = L->prox;
+    }
+    return total;
+}
 
+int totalNotaNaLista (PNodoLista L, int nota)
+{
+    if(L == NULL)
+        return 0;
+    int c = 0;
+    if(L->Elemento.notaFinal == nota)
+        c++;
+    return c + totalNotaNaLista(L->prox, nota);
+    
+}
 
-
+DadosLista melhornotaTE (PNodoLista L)
+{
+    DadosLista X;
+    if(L == NULL)
+    {
+        X.numAluno = -1;
+        return X;
+    }
+    int melhor = -1, soma;
+    while(L != NULL){
+        soma = L->Elemento.notasTE[0] + L->Elemento.notasTE[1];
+        if(soma > melhor){
+            melhor = soma;
+            X = L->Elemento;
+        }
+        L = L->prox;
+    }
+    return X;
+}
