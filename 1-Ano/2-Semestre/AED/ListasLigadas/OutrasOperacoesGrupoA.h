@@ -2,7 +2,12 @@
 /* ------------------------------------------------------- */
 /* ---------- Biblioteca OutrasOperacoesGrupoA ----------- */
 /* ------------------------------------------------------- */
+#include <stdio.h>
+#include <stdlib.h>
 
+#include "Aleatorio.h"
+#include "OperacoesBasicasGrupoA.h"
+#include "EADLista.h"
 
 // Protótipos/headers das funções
 
@@ -16,7 +21,7 @@ PNodoLista criarListaAleatoria (int N)
 {
     PNodoLista L = criarLista();
     DadosLista X;
-    int N, int i = 0;
+    int i = 0;
     while (i < N)
     {
         X = criarElementoLista();
