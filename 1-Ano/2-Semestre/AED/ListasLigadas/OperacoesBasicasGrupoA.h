@@ -5,26 +5,26 @@
 
 
 typedef struct{
-  int   numAluno;	  // número de aluno (chave): { 70000, …, 75000 }
-  float notasMTP[2];  // notas dos mini-testes práticos: [0.0, 2.0]
+  int   numAluno;	  // nï¿½mero de aluno (chave): { 70000, ï¿½, 75000 }
+  float notasMTP[2];  // notas dos mini-testes prï¿½ticos: [0.0, 2.0]
   float notasTE[2];	  // notas dos testes escritos: [0.0, 8.0]
-  int   notaFinal;	  // nota final (valor arredondado da soma das 4 notas): { 0, …, 20 }
+  int   notaFinal;	  // nota final (valor arredondado da soma das 4 notas): { 0, ï¿½, 20 }
 }DadosLista;
 
 
-// Protótipos/headers das funções
+// Protï¿½tipos/headers das funï¿½ï¿½es
 
 void mostrarElementoLista (DadosLista);
 
 DadosLista criarElementoLista ();
 
-// comparação de 2 elementos do tipo DadosLista, pelo campo numAluno (chave)
+// comparaï¿½ï¿½o de 2 elementos do tipo DadosLista, pelo campo numAluno (chave)
 // devolve -1 se primeiro < segundo, 0 se iguais, 1 se primeiro > segundo
 int compararElementosLista (DadosLista, DadosLista);
 
 
 
-// Implementação das funções
+// Implementaï¿½ï¿½o das funï¿½ï¿½es
 
 void mostrarElementoLista (DadosLista X)
 {
@@ -48,7 +48,7 @@ DadosLista criarElementoLista ()
   return X;
 }
 
-// comparação de 2 elementos do tipo DadosLista, segundo o campo numAluno (chave)
+// comparaï¿½ï¿½o de 2 elementos do tipo DadosLista, segundo o campo numAluno (chave)
 //   devolve -1 se X < Y, 0 se X = Y, 1 se X > Y
 int compararElementosLista (DadosLista X, DadosLista Y)
 {
@@ -57,6 +57,70 @@ int compararElementosLista (DadosLista X, DadosLista Y)
   if (X.numAluno < Y.numAluno)
     return -1;
   return 0;
+}
+
+
+int numerosLista (PNodoLista L){
+    int cont = 0;
+    while(L!=NULL){
+        cont++;
+        L=L->Prox;
+    }
+    return cont;
+}
+
+int notafinaligualrecursiva(PNodoLista L, int nota){
+    if(L == NULL)
+        return 0;
+    if(L->Elemento.notaFinal == nota)
+        return 1 + notafinaligualrecursiva(L->Prox, nota);
+    else
+        return notafinaligualrecursiva(L->Prox, nota);
+}
+
+int notafinalmaiorigual (PNodoLista L, int nota){
+    int cont = 0;
+    while(L!=NULL){
+        if(L->Elemento.notaFinal >= nota){
+            cont++;
+        }
+        L=L->Prox;
+    }
+    return cont;
+}
+
+int maiorNotafinalrecursiva (PNodoLista L){
+    if (L == NULL)
+        return 0;
+    int maior = maiorNotafinalrecursiva(L->Prox);
+    if (L->Elemento.notaFinal > maior)
+        return L->Elemento.notaFinal;
+    else
+        return maior;
+}
+
+int maiorNotasTErecursiva (PNodoLista L){
+    if (L == NULL)
+        return 0;
+    int maior = maiorNotasTErecursiva(L->Prox);
+    if ((L->Elemento.notasTE[0] + L->Elemento.notasTE[1]) > maior)
+        return L->Elemento.notasTE[0] + L->Elemento.notasTE[1];
+    else
+        return maior;
+}
+
+
+int alunoPiorNotaMTP (PNodoLista L){
+    if (L == NULL)
+        return 0;
+    DadosLista pior = L->Elemento;
+    while (L != NULL){
+        if ((L->Elemento.notasMTP[0] + L->Elemento.notasMTP[1]) < (pior.notasMTP[0] + pior.notasMTP[1])){
+            pior = L->Elemento;
+        }
+        L = L->Prox;
+    }
+    return pior.numAluno;
 }
 
 
