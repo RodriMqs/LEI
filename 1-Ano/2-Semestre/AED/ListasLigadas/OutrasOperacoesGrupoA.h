@@ -71,3 +71,68 @@ DadosLista melhornotaTE (PNodoLista L)
     }
     return X;
 }
+
+
+
+PNodoLista removerNotaIgual (PNodoLista L, int nota)
+{
+    PNodoLista P;
+    while(L != NULL && L->Elemento.notaFinal == nota){
+        P = L;
+	L = L->Prox;
+	P = libertarNodoLista(P);
+    }
+    PNodoLista head, ant;
+    head = L;
+    ant = L;
+    L = L->Prox;
+    while (L !=NULL){
+        if ( L->Elemento.notaFinal == nota){
+        	P = L;
+		L = L->Prox;
+		P = libertarNodoLista(P);
+		ant->Prox = NULL;
+        }
+        else{
+            ant->Prox = L;
+            ant = L;
+	    L = L->Prox;
+        }
+    }
+    return head;
+}
+
+
+ordenarselectionNotaFinal (PNodoLista L)
+{
+    PNodoLista P, Q, R; 
+    DadosLista X;
+    P = L;
+    while (P!=NULL)
+    {
+        R = P;
+        Q = P->Prox;
+        while (Q!=NULL)
+        {
+            if (Q->Elemento.notaFinal < R->Elemento.notaFinal){
+                R = Q;
+            Q = Q->Prox;
+        }
+    }
+    if ( R != P)
+    {
+        X = P->Elemento;
+        P->Elemento = R->Elemento;
+        R->Elemento = X;
+    }
+P = P->Prox;
+}
+return L;
+}
+
+
+
+
+
+
+
