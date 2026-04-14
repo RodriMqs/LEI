@@ -91,3 +91,86 @@ PNodoPilha trocarFundoTopo (PNodoPilha S)
   }
   return S;
 }
+
+//ex 5
+DadosPilha mostrarElementoN(PNodoPilha S, int N)
+{
+  PNodoPilha Aux= criarPilha();
+  DadosPilha X; 
+  int i = 1;
+  for (i; i<N; i++){
+    Aux = push(topo(S), Aux);
+    S = pop(S);
+  }
+  X = topo(S);
+  while (!pilhaVazia(Aux)){
+    S = push(topo(Aux), S);
+    Aux = pop(Aux);
+  }
+  return X;
+}
+//ex 7
+DadosPilha fundoPilha (PNodoPilha S, int N){
+  PNodoPilha Aux = criarPilha();
+  DadosPilha X;
+  while (!pilhaVazia(S)){
+    X = topo(S);
+    Aux = push(X, Aux);
+    S = pop(S);
+  }
+  while (!pilhaVazia(Aux)){
+    S = push(topo(Aux), S);
+    Aux = pop(Aux);
+  }
+  return X;
+}
+//ex 8
+DadosPilha terceiroElementoFundo (PNodoPilha S, int N){
+  PNodoPilha Aux = criarPilha();
+  DadosPilha X;
+  for (int i = 1; i < N - 2; i++){
+    Aux = push(topo(S), Aux);
+    S = pop(S);
+  }
+  X = topo(S);
+  while (!pilhaVazia(Aux)){
+    S = push(topo(Aux), S);
+    Aux = pop(Aux);
+  }
+  return X;
+}
+
+// ex 10
+void organizarPilhaNota(PNodoPilha *S){
+  PNodoPilha Apr = criarPilha();
+  PNodoPilha Rep = criarPilha();
+  while (!pilhaVazia(*S)){
+    DadosPilha X = topo (*S);
+    if (X.notaFinal > 10)
+      Apr = push(X, Apr);
+    else
+      Rep = push(X, Rep);
+    *S = pop(*S);
+  }
+  while (!pilhaVazia(Rep)){
+    *S = push(topo(Rep), *S);
+    Rep = pop(Rep);
+  }
+  while (!pilhaVazia(Apr)){
+    *S = push(topo(Apr), *S);
+    Apr = pop(Apr);
+  }
+}
+
+// inverter
+PNodoPilha inverterPilha(PNodoPilha S){
+if (pilhaVazia(S)) {
+        return S; 
+    }
+    DadosPilha temp = topo(S);
+    S = pop(S);
+    S = inverterPilhaRecursiva(S);
+    S = inserirNoFundo(S, temp);
+    return S;
+}
+
