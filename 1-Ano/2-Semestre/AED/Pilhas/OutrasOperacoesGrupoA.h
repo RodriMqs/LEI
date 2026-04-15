@@ -205,4 +205,25 @@ int inverterPilhaRestrição (PNodoPilha *S){
 }
 
 
+float mediaPositivos( PNodoPilha *S){
+	PNodoPilha AUX = criarPilha ();
+	if (pilhaVazia(*S)) return 0;
+	int contagem = 0;
+	float soma = 0;
+	INFOPilha valor;
+	while(!pilhaVazia(*S)){
+		if( topo(*S) >=0){
+			contagem ++;
+			soma += topo(*S);
+		}
+	AUX = push(topo(*S), AUX);
+	*S = pop(*S);
+	}
+	while(!pilhaVazia(AUX)){
+		*S = push((topo(AUX)), *S);
+		AUX = pop(AUX);
+	}
+	if (contagem == 0) return 0;
+	return  soma / contagem;
+}
 

@@ -104,3 +104,42 @@ int contaMaioresPositivosRecursiva (PNodo L, int X){
     return contagemResto;}
 }
 
+int somaImparesMaiores10(PNodo L){
+	int soma = 0;
+	if (L == NULL) return 0;
+	if (L->Elemento > 10 && L->Elemento % 2 !=0){
+		return L->Elemento + somaImparesMaiores10(L->Prox);}
+	else{
+		return somaImparesMaiores10(L->Prox);
+	}
+}
+
+//remover primeiro negativo
+
+PNodoLista removerPrimeiroNegativo(PNodoLista L)
+	PNodoLista P, PPos, PAnt;
+	if (L==NULL) return L;
+	PPos = NULL;
+	PAnt = NULL;
+	P = L;
+	while (P!= NULL){
+		if (P->Elemento >= 0){
+			PPos = PAnt;
+		}
+		PAnt = P;
+		P = P->Prox;
+	}
+	if (PPos == NULL){
+		if (L-Elemento < 0){
+			P = L;
+			L = L->Prox;
+			P = libertarNodoLista(P);
+		}
+	}
+	else{
+		P = PPos -> Prox;
+		PPos->Prox = P->Prox;
+		P = libertarNodoLista(P);
+	}
+	return L;
+}
