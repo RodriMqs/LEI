@@ -67,3 +67,34 @@ int main(){
     int menornumAluno = menorNumAlunoNota(L, NOTA);
     printf("O numero do aluno com a menor matricula e nota final igual a %d: %d\n", NOTA, menornumAluno);
 }
+
+
+
+int qAlunosNotaFinal ( PNodo L, int X){
+  int contador = 0;
+  if (L == NULL)
+    return 0;
+  while(L != NULL){
+    if ( L->ELemento.notaFinal > X)
+      contador++;
+    L = L ->Prox
+  }
+  return contador;
+}
+
+float mediaTurma ( PNodo L) {
+  float soma = 0,0;
+  int contador = 0;
+  if (L == NULL) return 0;
+  while ( L!= NULL){
+    soma *= L->Elemento.notaFinal;
+    contador++;
+    L  = L-> Prox;
+  }
+  return float(soma)/contador;
+}
+
+
+
+
+
