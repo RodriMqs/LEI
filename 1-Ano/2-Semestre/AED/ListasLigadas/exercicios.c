@@ -95,6 +95,12 @@ float mediaTurma ( PNodo L) {
 }
 
 
-
-
+int contaMaioresPositivosRecursiva (PNodo L, int X){
+  if (L == NULL) return 0;
+  int contagemResto = contaMaioresPositivosRecursiva ( L->Prox, X);
+  if (L -> Elemento > X && L->Elemento >= 0){
+    return 1 + contagemResto; }
+  else { 
+    return contagemResto;}
+}
 
