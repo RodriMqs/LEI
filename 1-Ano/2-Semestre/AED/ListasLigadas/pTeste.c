@@ -86,3 +86,57 @@ PNodoLista moverPiorFim(PNodoLista L){
 	}
 	return L;
 }
+
+//mover pior nota para inicio da lista
+PNodo moverMinimoParaInicio (PNodoLista L){
+	if ( L ==NULL || L->Prox == NULL) return L;
+	PNodoLista P=L;
+	PNodoLista Pant = NULL;
+	PNodoLista Pior = L;
+	PNodoLista APior= NULL;
+	while(P!=NULL){
+		if(P->Elemento.notaFinal < Pior->Elemento.notaFinal){
+			Pior = P;
+			APior = Pant;
+		}
+		Pant = P;
+		P = P->Prox;
+	}
+	if(APior != NULL){
+		APior ->Prox = Pior ->Prox;
+		Pior->Prox = L;
+		L = Pior;
+	}
+	return L;
+}
+
+//calcular media e remover o primeiro que esteja abaixo
+PNodo removerAbaixoDaMedia (PNodoLista L){
+	if(L == NULL ) return L;
+	PNodoLista P = L;
+	PNodoLista Pant = NULL;
+	float soma=0;
+	int contador = 0;
+	while(P!=NULL){
+		media += P->Elemento.notaFinal;
+		contador ++;
+		Pant = P;
+		P = P->Prox;
+	}
+	float media = soma / contador;
+	P = L;
+	while (P!=NULL){
+		if(P->Elemento.notaFinal < media){
+			PNodoLista AUX = P;
+			if(Pant == NULL){
+				L=P->Prox;
+			}else{
+				Pant ->Prox = P->Prox;
+				P = Pant->Prox;
+			}
+		}
+		Pant = P;
+		P = P->Prox;
+	}
+	return L;
+}
