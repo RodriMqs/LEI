@@ -1,0 +1,41 @@
+//remover reprovados mantendo a pilha
+PNodoPilha removerReprovados(PNodoPilha S){
+	PNodoPilha AUX = criarPilha ();
+	DadosPilha X;
+	while(!pilhaVazia(S)){
+		X = topo(S);
+		if(X->notaFinal >= 10){
+			AUX = push (AUX, S);
+		}
+		S = pop(S);
+	}
+	while(!pilhaVazia(S)){
+		S = push(topo(AUX), S);
+		AUX = pop(AUX);
+	}
+	return S;
+}
+
+//passar elementos com numero maior que 76000 para outra pilha , eles devem manter a ordem que tinham na pilha original
+PNodoPilha transferirElementos( PNodoPilha *S1, PNodoPilha *S2){
+PNodoPilha S1aux = criarPilha();
+PNodoPilha S2aux = criarPilha();
+DadosPilha X;
+while(!pilhaVazia(*S1)){
+	X = topo(*S1);
+	if(X.numAluno > 76000){
+		S2aux = push(X, S2aux);
+	}else{
+		S1aux = push(X, S1aux);
+	}
+	*S1 = pop(*S1);
+}
+while(!pilhaVazia(S1aux)){
+	*S1 = push(topo(S1aux), *S1);	
+	S1aux = pop(S1aux);
+}
+while(!pilhaVazia(S2aux)){
+	*S2 = push(topo(S2aux), *S2);
+	S2aux = pop(S2aux);
+}
+}
