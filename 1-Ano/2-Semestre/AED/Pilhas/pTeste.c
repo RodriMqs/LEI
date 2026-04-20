@@ -75,3 +75,4 @@ PNodoPilha filtrarApenasPares (PNodoPilha S){
 	}
 	return S;
 }
+
