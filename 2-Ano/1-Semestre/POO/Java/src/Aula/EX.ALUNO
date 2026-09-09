@@ -1,0 +1,11 @@
+Cria uma classe Aula com os seguintes atributos:
+
+nome
+idade
+curso
+
+Depois, no main, cria um objeto aluno1 e atribui:
+
+Nome: João
+Idade: 20
+Curso: Engenharia Informática

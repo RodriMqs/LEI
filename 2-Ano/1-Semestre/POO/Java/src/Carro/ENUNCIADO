@@ -1,0 +1,17 @@
+cria uma classe Carro que tenha:
+
+marca
+modelo
+ano
+velocidade
+
+E que tenha:
+
+Construtor
+Getters
+Setters
+acelerar() → aumenta a velocidade em 10
+travar() → diminui a velocidade em 10
+mostrarDados() → apresenta todos os dados
+
+Depois cria dois carros diferentes no main.
